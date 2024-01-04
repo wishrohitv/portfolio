@@ -1,1 +1,133 @@
-<h1>he im rohit</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color: rgb(169, 229, 135); display: flex;
+justify-content: center; align-items: center; flex-direction: column;" id="bck">
+    <div style="position: relative;">
+    <h1 id="greetings" style="font-family: 'Rubik Glitch', system-ui; word-spacing: 8px ;padding: auto; width: auto;">Hello, This is my first Website</h1>
+
+    <button onclick="called()" id="greetme" style="border-radius: 8px; height: 60px; background-color: rgb(43, 226, 134); font-family: 'Rubik Glitch', system-ui;">Greet YourSelf😀</button>
+
+    <button onclick="changColor()" id="changColor" style="border-radius: 8px; height: 60px; background-color: rgb(186, 129, 239); font-family: 'Rubik Glitch', system-ui;">Change Color🤗</button>
+
+    <button onclick="changBackgroundColor()" id="changbackColor" style="border-radius: 8px; height: 60px; background-color: rgb(239, 135, 143); font-family: 'Rubik Glitch', system-ui;">Change Background Color🙄</button>
+    <script>
+        function called() {
+            var time = new Date()
+            let timestamp = time.getHours()
+            console.log(timestamp)
+
+            var greting_user;
+            if (timestamp >= 0 && timestamp < 12){
+                greting_user = "Good Morning🤩";
+            }
+            else if (timestamp >=12 && timestamp < 19){
+                greting_user = "Good AfterNoon🥰"
+            }
+            else if (timestamp >=19 && timestamp < 24){
+                greting_user = "Good Evening😎"
+            }
+            else if (timestamp >=24){
+                greting_user = "Good Night😴"
+            }
+
+            document.getElementById("greetings").innerText = "Hello, "+greting_user
+        }
+        function changColor(){
+            let list = ["red", "green", "yellow", "purple", "skyblue", "pink"]
+            let m = Math.random() * 5
+            console.log(parseInt(m))
+            document.getElementById("greetings").style.color = list[parseInt(m)]
+            document.getElementById("table").style.borderColor = list[parseInt(m)]
+            document.getElementById("greetme").style.color = list[parseInt(m)]
+            document.getElementById("changColor").style.color = list[parseInt(m)]
+            document.getElementById("changbackColor").style.color = list[parseInt(m)]
+            document.getElementById("about").style.color = list[parseInt(m)]
+        }
+        
+        function changBackgroundColor(){
+            let list = ["red", "green", "yellow", "purple", "skyblue", "pink"]
+            let m = Math.random() * 5
+            console.log(parseInt(m))
+            document.getElementById("bck").style.backgroundColor = list[parseInt(m)]
+
+        }
+    </script>
+
+    <hr>
+    <h2 style="font-family: 'Rubik Glitch', system-ui;">My Daily Routine</h2>
+    <table border="2" align="left" id="table" style="border-radius: 8px; height: 70px;">
+        <tr align="center">
+            <th>
+                Sunday
+            </th>
+            <th>
+                Monday
+            </th>
+            <th>
+                Tuesday
+            </th>
+            <th>
+                Wednesday
+            </th>
+            <th>
+                Thursday
+            </th>
+            <th>
+                Suturday
+            </th>
+        </tr>
+        <tr align="center">
+            <td>
+                No Data
+            </td>
+            <td>
+                No Please
+            </td>
+            <td>
+                No Please
+            </td>
+            <td>
+                No Please
+            </td>
+            <td>
+                No Please
+            </td>
+            <td>
+                No Please
+            </td>
+        </tr>
+
+    </table>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <h1 style="font-family: 'Rubik Glitch', system-ui;">about me</h1>
+    <p style="font-family: 'Rubik Glitch', system-ui; font-size: large;"><h1 id="about">>I'm Disaster in managing things😤</h1</p>
+    <br>
+    <br>
+
+    <div style="flex-direction: row; display: flex; justify-content: center; align-items: center; padding: 10px;">
+    <a href="https://github.com/wishrohitv" target="_blank">
+        <img src="github.png" alt="github" height="70px">
+    </a>
+    <a href="https://intagram.com/wishrohitv" target="_blank">
+        <img src="instagram.png" alt="instagram" height="70px">
+    </a>
+    </div>
+
+    <h1>Thanks for Visiting....</h1>
+    </div>
+</body>
+
+</html>
