@@ -8,10 +8,10 @@ function called() {
     if (timestamp >= 0 && timestamp < 12){
         greting_user = "Good Morning🤩";
     }
-    else if (timestamp >=12 && timestamp < 19){
+    else if (timestamp >=12 && timestamp < 16){
         greting_user = "Good AfterNoon🥰"
     }
-    else if (timestamp >=19 && timestamp < 24){
+    else if (timestamp >=16 && timestamp < 19){
         greting_user = "Good Evening😎"
     }
     else if (timestamp >=24){
