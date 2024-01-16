@@ -2,23 +2,24 @@
 function called() {
     var time = new Date()
     let timestamp = time.getHours()
-    console.log(timestamp)
 
-    var greting_user;
+    var greet_user;
     if (timestamp >= 0 && timestamp < 12){
-        greting_user = "Good Morning🤩";
+        greet_user = "Good Morning🤩";
     }
     else if (timestamp >=12 && timestamp < 16){
-        greting_user = "Good AfterNoon🥰"
+        greet_user = "Good AfterNoon🥰";
     }
     else if (timestamp >=16 && timestamp < 19){
-        greting_user = "Good Evening😎"
+        greet_user = "Good Evening😎";
+
     }
-    else if (timestamp >=24){
-        greting_user = "Good Night😴"
+    else if (timestamp <24){
+        greet_user = "Good Night😴";
+
     }
 
-    document.getElementById("greetings").innerText = "Hello, "+greting_user
+    document.getElementById("greetings").innerText = "Hello, "+greet_user
 }
 
 // text color changer
