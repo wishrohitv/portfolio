@@ -2,105 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wishrohitv-portfolio</title>
-    <script src="index.js"></script>
-    <link rel="icon" type="image/x-icon" href="icons/icon.jpg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wishrohitv – Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="icons/icon.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="index.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- new serious serif font -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for tech icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body style="background-color: rgb(169, 229, 135); display: flex;
-justify-content: center; align-items: center; flex-direction: column;" id="bck">
-    <div style="position: relative;">
-    <h1 id="greetings" style="font-family: 'Rubik Glitch', system-ui; word-spacing: 8px ;padding: auto; width: auto; font-size: 45px;">Hello, well i'm not great designer </h1>
+<body id="bck">
+  <header class="site-header">
+    <h1 class="site-title">wishrohitv</h1>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="main-nav">
+      <button class="nav-close">×</button>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <button onclick="called()" id="greetme" style="border-radius: 8px; height: 60px; background-color: rgb(43, 226, 134); font-family: 'Rubik Glitch', system-ui; font-size: 22px;">Greet YourSelf😀</button>
+  <main class="container">
+    <section id="hero" class="hero">
+      <h2 id="greetings">Hello and welcome to my portfolio</h2>
+      <div class="buttons">
+        <button onclick="called()" id="greetme">Greet Yourself 😀</button>
+        <button onclick="changColor()" id="changColor">Change Color 🤗</button>
+        <button onclick="changBackgroundColor()" id="changbackColor">Change Background Color 🙄</button>
+      </div>
+    </section>
 
-    <button onclick="changColor()" id="changColor" style="border-radius: 8px; height: 60px; background-color: rgb(186, 129, 239); font-family: 'Rubik Glitch', system-ui;">Change Color🤗</button>
+    <section id="routine" class="routine">
+      <h2>My Daily Routine</h2>
+      <table id="table">
+        <thead>
+          <tr>
+            <th>Sunday</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th>
+            <th>Thursday</th><th>Friday</th><th>Saturday</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Code</td><td>Code</td><td>Code</td><td>Code</td>
+            <td>Code</td><td>Code</td><td>Code</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-    <button onclick="changBackgroundColor()" id="changbackColor" style="border-radius: 8px; height: 60px; background-color: rgb(239, 135, 143); font-family: 'Rubik Glitch', system-ui;">Change Background Color🙄</button>
+    <section id="about" class="about">
+      <h2>About Me</h2>
+      <p>I am a backend developer and Flutter mobile developer with a passion for clean, reliable code. This site showcases some of my work and interests.</p>
+      <h3>Tech Stack</h3>
+      <ul class="tech-stack">
+        <li><i class="fab fa-python"></i> Flask</li>
+        <li><i class="fab fa-node-js"></i> Express</li>
+        <li><i class="fas fa-database"></i> PostgreSQL</li>
+        <li><i class="fas fa-database"></i> MongoDB</li>
+        <li><i class="fab fa-flutter"></i> Flutter</li>
+      </ul>
+    </section>
 
+    <section id="social" class="social">
+      <a href="https://github.com/wishrohitv" target="_blank"><img src="icons/github.png" alt="GitHub"></a>
+      <a href="https://instagram.com/wishrohitv" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+    </section>
 
-    <hr>
-    <br>
-    <h2 style="font-family: 'Rubik Glitch', system-ui;">My Daily Routine</h2>
-    <table border="2" align="left" id="table" style="border-radius: 8px; height: 75px;">
-        <tr align="center">
-            <th>
-                Sunday
-            </th>
-            <th>
-                Monday
-            </th>
-            <th>
-                Tuesday
-            </th>
-            <th>
-                Wednesday
-            </th>
-            <th>
-                Thursday
-            </th>
-            <th>
-                Friday
-            </th>
-            <th>
-                Suturday
-            </th>
-        </tr>
-        <tr align="center">
-            <td>
-                No Data
-            </td>
-            <td>
-                No Please
-            </td>
-            <td>
-                No Please
-            </td>
-            <td>
-                No Please
-            </td>
-            <td>
-                No 😇
-            </td>
-            <td>
-                No Please
-            </td>
-            <td>
-                No Please
-            </td>
-        </tr>
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div id="project-list">
+        <p>Loading popular GitHub repositories…</p>
+      </div>
+    </section>
 
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1 style="font-family: 'Rubik Glitch', system-ui;">about me</h1>
-    <p style="font-family: 'Rubik Glitch', system-ui; font-size: large;"><h1 id="about">>I'm Disaster in managing things😤</h1></p>
-    <br>
-    <br>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>You can reach me on <a href="mailto:wishrohitv@outlook.com">email</a>.</p>
+    </section>
+  </main>
 
-    <div style="flex-direction: row; display: flex; justify-content: center; align-items: center; padding: 10px;">
-        <a href="https://github.com/wishrohitv" target="_blank">
-            <img src="icons/github.png" alt="github" height="70px" style="margin-right: 40px;">
-        </a>
-        <a href="https://instagram.com/wishrohitv" target="_blank">
-            <img src="icons/instagram.png" alt="instagram" height="70px" style="margin-left: 40px; margin-right: 40px;">
-        </a>
-    </div>
+  <footer class="site-footer">
+    <p>Thanks for visiting…</p>
+    <p class="vibe-label">This portfolio is vibe coded And it sucks</p>
+  </footer>
 
-    <div class="visiter" style="opacity: 0;"><script type="text/javascript" src="https://www.counters-free.net/count/dlk6"></script><br>
-        <a href='https://www.acadoo.de/'>Ghostwriting</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=481a5ee27072d9b40db69ab326f1715558d42c81'></script>
-    </div>
-
-    <h1>Thanks for Visiting....</h1>
-    </div>
+  <!-- visitor counter embed (hidden corner) -->
+  <div id="visitor-counter" style="position:fixed; bottom:8px; right:8px; opacity:0.3; z-index:1002;">
+    <a href="https://www.counters-free.net/stats/dlk6" style="text-decoration: none;">
+      <svg width="100" height="90" id="besucherzaehler2"><g><rect width="100" height="70" x="0" y="0" style="fill: #ffffff;" fill-opacity="1.0"></rect><text x="6" y="38" style="" font-family="Roboto, sans-serif" font-size="11" fill="#565656">Total: 300</text><text x="6" y="50" style="" font-family="Roboto, sans-serif" font-size="11" fill="#565656">Today: 2</text><text x="6" y="62" style="" font-family="Roboto, sans-serif" font-size="11" fill="#565656">Yesterday: 1</text><rect width="3" height="9" x="6" y="14" style="fill: #565656;"></rect><rect width="3" height="17" x="11" y="6" style="fill: #565656;"></rect><rect width="3" height="13" x="16" y="10" style="fill: #565656;"></rect><text x="25" y="23" style="font-weight: bold;" font-family="Roboto, sans-serif" font-size="11" fill="#565656">Visitors</text></g></svg>
+    </a>
+  </div>
 </body>
 
 </html>
