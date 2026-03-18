@@ -1,99 +1,104 @@
-// Greeter
-function called() {
+function setGreeting() {
     const hour = new Date().getHours();
-    let greet_user = "";
+    let message = 'Hello, I’m Rohit — I build reliable web and mobile platforms.';
 
-    if (hour < 12) {
-        greet_user = "Good Morning 🤩";
-    } else if (hour < 16) {
-        greet_user = "Good Afternoon 🥰";
-    } else if (hour < 19) {
-        greet_user = "Good Evening 😎";
-    } else {
-        greet_user = "Good Night 😴";
-    }
+    if (hour < 12) message = 'Good morning — ready to build something scalable today?';
+    else if (hour < 16) message = 'Good afternoon — let’s make efficient and maintainable systems.';
+    else if (hour < 19) message = 'Good evening — optimizing backend APIs and app performance.';
+    else message = 'Good night — I’m still refining code quality, one commit at a time.';
 
-    document.getElementById("greetings").innerText = `Hello, ${greet_user}`;
+    const greetingEl = document.getElementById('greetings');
+    if (greetingEl) greetingEl.textContent = message;
 }
 
-// text color changer
-function changColor() {
-    const colors = ["red", "green", "yellow", "purple", "skyblue", "pink"];
-    const idx = Math.floor(Math.random() * colors.length);
-    const elems = document.querySelectorAll(
-        "#greetings, #table, #greetme, #changColor, #changbackColor, #about"
-    );
-    elems.forEach(el => el && (el.style.color = colors[idx]));
+function toggleTheme() {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('portfolio-theme', next);
 }
 
-// background Color changer
-function changBackgroundColor() {
-    const gradients = [
-        "linear-gradient(-45deg, #ee9952, #e74c7e, #29a6d5, #66d5ab)",
-        "linear-gradient(-45deg, #e2c81f, #e20157, #23a6d5, #58e8c6)",
-        "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
-        "linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%)",
-    ];
-    const idx = Math.floor(Math.random() * gradients.length);
-    document.getElementById("bck").style.background = gradients[idx];
+function applySavedTheme() {
+    const saved = localStorage.getItem('portfolio-theme');
+    const root = document.documentElement;
+    if (saved === 'dark') root.setAttribute('data-theme', 'dark');
 }
 
-// fetch popular GitHub repos and display
 async function loadProjects(user, count = 5) {
+    const container = document.getElementById('project-list');
+
     try {
         const resp = await fetch(`https://api.github.com/users/${user}/repos?sort=stars&per_page=${count}`);
         if (!resp.ok) throw new Error(`${resp.status} ${resp.statusText}`);
+
         const repos = await resp.json();
-        const container = document.getElementById('project-list');
         container.innerHTML = '';
-        repos.forEach(r => {
-            const a = document.createElement('a');
-            a.href = r.html_url;
-            a.target = '_blank';
-            a.textContent = r.name + ' ⭐' + r.stargazers_count;
-            const p = document.createElement('p');
-            p.appendChild(a);
-            container.appendChild(p);
+
+        repos.forEach(repo => {
+            const card = document.createElement('article');
+            card.className = 'project-card';
+
+            const title = document.createElement('h3');
+            title.textContent = repo.name;
+
+            const desc = document.createElement('p');
+            desc.textContent = repo.description ? repo.description : 'No description available.';
+
+            const meta = document.createElement('p');
+            meta.className = 'project-meta';
+            meta.innerHTML = `<strong>★ ${repo.stargazers_count}</strong> · ${repo.language || 'Unknown'} · Updated ${new Date(repo.updated_at).toLocaleDateString()}`;
+
+            const link = document.createElement('a');
+            link.href = repo.html_url;
+            link.target = '_blank';
+            link.rel = 'noreferrer';
+            link.textContent = 'View on GitHub';
+
+            card.append(title, desc, meta, link);
+            container.appendChild(card);
         });
-    } catch (e) {
-        console.error('Failed to load repos', e);
-        const container = document.getElementById('project-list');
-        container.innerHTML = '<p>Unable to fetch repositories.</p>';
+
+        if (repos.length === 0) {
+            container.innerHTML = '<p>No repository data found.</p>';
+        }
+    } catch (error) {
+        console.error('Failed to load repos', error);
+        container.innerHTML = '<p>Unable to fetch repositories right now. Please try again later.</p>';
     }
 }
 
-// nav toggle for mobile
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 const navClose = document.querySelector('.nav-close');
 
 function updateNavToggleVisibility() {
     if (!navToggle) return;
-    navToggle.style.display = window.innerWidth <= 600 ? '' : 'none';
+    navToggle.style.display = window.innerWidth <= 760 ? 'block' : 'none';
 }
 
 if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('open');
-    });
+    navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
 }
 
 if (navClose) {
-    navClose.addEventListener('click', () => {
-        mainNav.classList.remove('open');
-    });
+    navClose.addEventListener('click', () => mainNav.classList.remove('open'));
 }
 
 if (mainNav) {
     mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mainNav.classList.remove('open');
-        });
+        link.addEventListener('click', () => mainNav.classList.remove('open'));
     });
 }
 
 window.addEventListener('resize', updateNavToggleVisibility);
-window.addEventListener('DOMContentLoaded', updateNavToggleVisibility);
+window.addEventListener('DOMContentLoaded', () => {
+    applySavedTheme();
+    setGreeting();
+    loadProjects('wishrohitv', 6);
+    updateNavToggleVisibility();
 
-// run on startup
-window.addEventListener('DOMContentLoaded', () => loadProjects('wishrohitv', 5));
+    const themeToggleEl = document.getElementById('themeToggle');
+    if (themeToggleEl) {
+        themeToggleEl.addEventListener('click', toggleTheme);
+    }
+});
